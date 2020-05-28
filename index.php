@@ -12,7 +12,11 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
   </head>
   <body>
-    <div class="col-md-4 container pageConnect">
+  <div id="titre">
+		<img alt="icone quiz"  id="icone-titre" src="public/images/logo-QuizzSA.png">
+		<div id="lePlaisirDeJouer">Le plaisir de jouer</div>
+	</div>
+    <div class="container col-md-6 col-sm-12 col-xs-12 pageConnect">
       <div class="col-md-12 loginform">Login Form</div>
       <div class="col-md-12 rounded-bottom form_container">
         <form class="myform" id="form_connexion">
@@ -29,8 +33,6 @@
         </form>
       </div>
    </div>
-
-
 
 
 
