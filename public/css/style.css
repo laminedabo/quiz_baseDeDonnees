@@ -1,0 +1,43 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	background-image: url(../images/img-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+.pageConnect{
+	margin-top: 50px;
+}
+.loginform{
+	background-color:  #7799DB;
+	padding: 10px 10% 30px 70px;
+	font-size: 30px;
+	color: #FFFFFF;
+}
+.form_container{
+	background: #FFEBEB;
+	padding: 20px;
+}
+.myform input{
+	background-position: 95%;
+	background-repeat: no-repeat;
+	height: 50px;
+	border: 1px solid #2F80ED;
+}
+#login{
+	background-image: url('../images/icones/ic-login.png');
+}
+#password{
+	background-image: url('../images/icones/ic-password.png');
+}
+.btn_connexion{
+	border: 1px solid #FFFFFF;
+}
+#sinscrire{
+	font-weight: bold;
+	text-decoration: none;
+}
