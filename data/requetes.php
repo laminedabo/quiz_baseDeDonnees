@@ -44,11 +44,12 @@
             $query->bindParam("password", $password, PDO::PARAM_STR);
             $query -> execute();
 			if($query -> rowCount() > 0){
-				return $query -> fetch(PDO::FETCH_ASSOC);				
+				$user = $query -> fetch(PDO::FETCH_ASSOC);
+				$profil = $user['profil'];
+				$_SESSION['user']=$user;
+		 		$_SESSION['statut']='login';
 			}
 			if(isset($profil)){
-				$_SESSION['user']=['dd','ee'];
-		 		$_SESSION['statut']='login';
 				if($profil == 'admin'){
 					return 'admin';
 				}

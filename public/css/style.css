@@ -61,3 +61,7 @@ body{
 	text-decoration: none;
 	float: right;
 }
+.accueil{
+	height: 100vh;
+	background-color: #FFFFFF;
+}

@@ -9,18 +9,7 @@
 				$msg_erreur = "<span id='msg_erreur'>login ou mot de pass incorrect.</span>";
 			}
 			else{
-				$_SESSION['user']=result;
-				$_SESSION['statut']='login';
-				if($result['profil'] == 'admin'){
-						$user = 'admin';
-					}
-					else{
-						$_SESSION['questionsRepondues']= [];
-						$_SESSION['questionsTrouvees'] = [];
-						$_SESSION['pointsAccumules'] = 0;
-						$user = 'joueur';
-					}
-				header('location:index.php?user='.$user);
+				header('location:index.php?user='.$result);
 			}
 		}
 		else{
