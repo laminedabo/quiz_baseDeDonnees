@@ -16,28 +16,38 @@
 		<img alt="icone quiz"  id="icone-titre" src="public/images/logo-QuizzSA.png">
 		<div id="lePlaisirDeJouer">Le plaisir de jouer</div>
 	</div>
-    <div class="container col-md-6 col-sm-12 col-xs-12 pageConnect">
-      <div class="col-md-12 loginform">Login Form</div>
-      <div class="col-md-12 rounded-bottom form_container">
-        <form class="myform" id="form_connexion">
-          <div class="form-group">
-            <input type="text" class="form-control" id="login" placeholder="Login" error="error1" autofocus="">
-            <small  class="form-text text-muted error_form" id="error1"></small>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="password" error="error2">
-            <small  class="form-text text-muted error_form" id="error2"></small>
-          </div>
-          <button type="submit" class="btn btn-primary btn_connexion">Submit</button>
-          <a id="sinscrire" href="index.php?inscrire=inscription.php">S'inscrire pour jouer?</a>
-        </form>
-      </div>
-   </div>
 
 
 
+<?php
+		session_start();
+		require_once ('traitement/fonctions.php');
+		require_once ('data/requetes.php');
+		if (isset($_GET['user'])) {
+			switch ($_GET['user']) {
+				case 'admin':
+					require_once('./pages/accueil.php');
+					break;
 
-
+				case 'joueur':
+					require_once('./pages/jeux.php');
+					break;
+				default :
+					require_once('./pages/connexion.php');
+					break;
+			}
+		}
+		elseif (isset($_GET['inscrire']) || isset($_GET['img'])) {
+			require_once('./pages/inscription.php');
+		}
+		else{
+			require_once('./pages/connexion.php');
+		}
+		
+		if (isset($_GET['statut']) && $_GET['statut']==='logout') {
+			deconnexion();
+		}
+	?>
 
 
 
