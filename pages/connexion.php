@@ -11,6 +11,7 @@
             <input type="password" name="password" class="form-control" id="password" placeholder="password" error="Mot de passe">
             <small  class="form-text text-muted error_form" id="Mot de passe"></small>
           </div>
+		  <input type="hidden" name="type" value="connexion">
           <button type="submit" name="submit" class="btn btn-primary btn_connexion" id="btn_connexion">Connexion</button>
           <a id="sinscrire" href="index.php?inscrire=inscription.php">S'inscrire pour jouer?</a>
         </form>

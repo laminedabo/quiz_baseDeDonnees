@@ -28,20 +28,20 @@ $(document).ready(function(){
             }
         }
         if (error != true){
-            let fields = $( this ).serializeArray();
+			let fields = $( this ).serializeArray();
             $.post("./pages/message.php", fields,
                 function(result) {
                     if(result == 0){
                         alert('Erreur');
                     }
                     else if(result == 'admin'){
-                        window.location.replace("./pages/accueil.php");
+                        window.location="index.php?user=admin";
                     }
                     else if(result == 'joueur'){
-                        window.location.replace("./pages/joueur.php");
+                        window.location="index.php?user=joueur";
                     }
                     else{
-                        alert('login ou mot de pass incorect');
+                        alert('login ou mot de passe incorrect');
                     }
             });
         }        
@@ -50,7 +50,7 @@ $(document).ready(function(){
     /*--------------------------------
     Gestion de l'inscrption
     ----------------------------------*/
-    $( "#form" ).on( "submit", function( event ) {
+    $( "#form_inscription" ).on( "submit", function( event ) {
         event.preventDefault();
         var error  = false;
         for(input of inputs){
@@ -72,7 +72,10 @@ $(document).ready(function(){
                 else if(result == 2){
                     alert('inscription reussie. Vous allez etre redirigé sur la page de connexion.');
                     window.location.replace("index.php");
-                }
+				}
+				else{
+					alert(result)
+				}
             });
         }
 	});
