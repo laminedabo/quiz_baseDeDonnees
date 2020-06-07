@@ -1,4 +1,7 @@
 <?php
+	if(!isset($_SESSION)){
+		session_start();
+	}
 	/*--------------------------------------------------------
 	connexion a la BDD
 	----------------------------------------------------------*/
@@ -45,7 +48,9 @@
             exit($e -> getMessage());
         }
     }
-
+	/*---------------------------------------------------------
+	Authentification des utilisateurs
+	----------------------------------------------------------*/
 	function connexion($login,$password){
 		try{
 			$db = connect_db();
@@ -55,7 +60,7 @@
             $query -> execute();
 			if($query -> rowCount() > 0){
 				$user = $query -> fetch(PDO::FETCH_ASSOC);
-				$profil = $user['profil'];
+				$profil = $user['PROFIL'];
 				$_SESSION['user']=$user;
 		 		$_SESSION['statut']='login';
 			}
@@ -75,6 +80,73 @@
 			}
 		}catch(PDOException $e){
 			exit($e -> getMessage());
+		}
+	}
+
+	/*---------------------------------------------------------
+	supprimer un joueur
+	----------------------------------------------------------*/
+	function deleteUser($id){
+		try{
+			$db = connect_db();
+			$query = $db -> prepare("DELETE FROM utilisateur WHERE id =: id");
+			$query -> bindParam("id", $id, PDO::PARAM_INT);
+			if($query -> execute()){
+				$result = 1;
+			}
+			else{
+				$result = 0;
+			}
+			return $result;
+		}
+		catch(PDOException $e){
+			die("erreur: ".$e -> getMessage());
+		}
+	}
+	/*------------------------------------
+	Modifier les infos d'un joueur
+	--------------------------------------*/ 
+	function updateUser($id,$prenom,$nom,$login,$password){
+		try{
+			$db = connect_db;
+			$query = $db -> prepare("UPDATE utilisateur SET prenom =: prenom, nom =: nom, login =: login,password =: password WHERE id =: id ");
+			$query -> bindParam("prenom", $prenom, PDO::PARAM_STR);
+			$query -> bindParam("nom", $nom, PDO::PARAM_STR);
+			$query -> bindParam("login", $login, PDO::PARAM_STR);
+			$query -> bindParam("password", $password, PDO::PARAM_STR);
+			$query -> bindParam("id", $id, PDO::PARAM_INT);
+			if($query -> execute()){
+				$result = 1;
+			}
+			else{
+				$result = 0;
+			}
+			return $result;
+		}
+		catch(PDOException $e){
+			die("erreur: ".$e -> getMessage());
+		}
+	}
+
+	/*------------------------------------
+	envoyer la liste des joueurs
+	--------------------------------------*/
+	function listeJoueur($limit = 5, $offset = 1){
+		try{
+			$db = connect_db();
+		$query = $db -> prepare("SELECT `PRENOM`, `NOM`, `ID` FROM `utilisateur` WHERE `PROFIL` = 'joueur' LIMIT {$limit} OFFSET {$offset} ");
+			$query -> execute();
+			if($query -> rowCount() > 0){
+				$result = $query -> fetchAll(PDO::FETCH_ASSOC);
+				$result = json_encode($result);
+			}
+			else{
+				$result = 0;
+			}
+			return $result;		
+		}
+		catch(PDOException $e){
+			die("erreur: ".$e -> getMessage());
 		}
 	}
 ?>

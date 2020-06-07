@@ -26,7 +26,7 @@ $(document).ready(function(){
                     error = true;
                 }
             }
-        }
+		}
         if (error != true){
 			let fields = $( this ).serializeArray();
             $.post("./pages/message.php", fields,
@@ -44,7 +44,7 @@ $(document).ready(function(){
                         alert('login ou mot de passe incorrect');
                     }
             });
-        }        
+		}
     });
     
     /*--------------------------------
@@ -94,7 +94,7 @@ $(document).ready(function(){
 	});
 	
 	/*-----------------------------------------------------
-	fonctions
+	keyup
 	-------------------------------------------------------*/
 	for(input of inputs){
 		input.addEventListener("keyup",function(e){

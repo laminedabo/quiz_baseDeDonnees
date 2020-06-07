@@ -22,16 +22,16 @@
         <div class="container menu">
             <ul class="nav nav-tabs nav-justified">
                 <li class="nav-item">
-                <a class="nav-link <?php if(!isset($_GET['menu']) || $_GET['menu']=='listeQuestions') echo(' active') ?>" href="pages/listeQuestions.php">Liste des questions</a>
+                    <a class="nav-link <?php if(!isset($_GET['menu']) || $_GET['menu']=='listeQuestions') echo(' active') ?>" href="pages/listeQuestions.php">Liste des questions</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link <?php if($_GET['menu']=='listeJoueurs') echo(' active') ?>" href="pages/listeJoueurs.php">Liste des joueurs</a>
+                    <a class="nav-link <?php if($_GET['menu']=='listeJoueurs') echo(' active') ?>" href="pages/listeJoueurs.php">Liste des joueurs</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link <?php if($_GET['menu']=='creerQuestions') echo(' active') ?>" href="pages/creerQuestions.php">Creer une question</a>
+                    <a class="nav-link <?php if($_GET['menu']=='creerQuestions') echo(' active') ?>" href="pages/creerQuestions.php">Creer une question</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link <?php if($_GET['menu']=='inscription') echo(' active') ?>" id="insc" href="pages/inscription.php">Creer un admin</a>
+                <li class="nav-item insc">
+                    <a class="nav-link <?php if($_GET['menu']=='inscription') echo(' active') ?>" href="pages/inscription.php">Creer un admin</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Espace Admin</a>
@@ -44,8 +44,10 @@
             </ul>
         </div>
     </div>
-    <div class="container" id="pageActuAdmin">
+    <div class="container float-left col-md-8" id="pageActuAdmin">
+        <?php include('listeQuestions.php');?>
     </div>
+    <div class="container float-right border  rounded shadow-sm col-md-4 mt-5 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit repellendus blanditiis neque ad modi aut voluptas ipsum quae doloribus nesciunt, ipsam, obcaecati dolores, sunt non dolor deleniti natus quasi fugiat?</div>
 </div>
 <?php
 ?>

@@ -1,5 +1,7 @@
-<div class="container pageInscription p-2  col-md-6" style="background-color:white;">
-  <div class="container">
+  <div class="container pageInscription p-2 mt-5 shadow">
+    <div class="container">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, repellat.
+    </div>
     <form method="POST" action="" class="myform" id="form_inscription">
           <div class="form-group">
             <input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prenom" error="Prenom" autofocus="">
@@ -19,7 +21,5 @@
           </div>
           <input type="hidden" name="type" value="inscription">
           <button type="submit" name="btn_inscription" class="btn btn-primary btn_connexion" id="btn_inscription">Creer le compte</button>
-          <a id="sinscrire" href="index.php?inscrire=inscription.php">S'inscrire pour jouer?</a>
     </form>
   </div>
-</div>
