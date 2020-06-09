@@ -105,3 +105,7 @@ $(document).ready(function(){
 		})
 	}
 })
+
+$(".nav .nav-item .meilleursScores, .jouer").click(function(){
+    alert('ok')
+})

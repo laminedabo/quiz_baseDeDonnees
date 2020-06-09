@@ -22,24 +22,10 @@
         <div class="container menu">
             <ul class="nav nav-tabs nav-justified">
                 <li class="nav-item">
-                <a class="nav-link <?php if(!isset($_GET['menu']) || $_GET['menu']=='listeQuestions') echo(' active') ?>" href="pages/listeQuestions.php">Liste des questions</a>
+                <a class="nav-link jouer <?php if(!isset($_GET['menu']) || $_GET['menu']=='listeQuestions') echo(' active') ?>" href="llll">Repondre aux questions</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link <?php if($_GET['menu']=='listeJoueurs') echo(' active') ?>" href="pages/listeJoueurs.php">Liste des joueurs</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link <?php if($_GET['menu']=='creerQuestions') echo(' active') ?>" href="pages/creerQuestions.php">Creer une question</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link <?php if($_GET['menu']=='inscription') echo(' active') ?>" href="pages/inscription.php">Creer un admin</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Espace Admin</a>
-                    <div class="dropdown-menu liste_esp_admin">
-                        <a class="dropdown-item" href="#">Link 1</a>
-                        <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" href="#">Link 3</a>
-                    </div>
+                <a class="nav-link meilleursScores <?php if($_GET['menu']=='listeJoueurs') echo(' active') ?>" href="lll">Meilleurs Scores</a>
                 </li>
             </ul>
         </div>
@@ -48,5 +34,5 @@
     </div>
 </div>
 <?php
-print_r($_SESSION);
+// print_r($_SESSION);
 ?>

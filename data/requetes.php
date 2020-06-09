@@ -149,4 +149,42 @@
 			die("erreur: ".$e -> getMessage());
 		}
 	}
+
+	/*------------------------------------
+	Modifier info partielle utilisateur
+	--------------------------------------*/
+	function update_partial($table,$id,$val,$champ){
+		try {
+			$db = connect_db();
+		$query = $db -> prepare("UPDATE `{$table}` SET `{$champ}` = '{$val}' WHERE `{$table}`.`ID` = {$id}");
+			if ($query -> execute()) {
+				return 'success';
+			}
+			else{
+				return 'error';
+			}
+		}
+		catch (PDOException $e) {
+			die("erreur: ".$e);
+		}
+	}
+
+	/*------------------------------------
+	bloquer un utilisateur
+	--------------------------------------*/
+	function bloqueUser($table,$id){
+		try {
+			$db = connect_db();
+		$query = $db -> prepare("UPDATE `{$table}` SET `ETAT` = 'bloque' WHERE `{$table}`.`ID` = {$id}");
+			if ($query -> execute()) {
+				return 'bloque';
+			}
+			else{
+				return 'error';
+			}
+		}
+		catch (PDOException $e) {
+			die("erreur: ".$e);
+		}
+	}
 ?>
