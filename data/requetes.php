@@ -134,7 +134,7 @@
 	function listeJoueur($limit = 5, $offset = 1){
 		try{
 			$db = connect_db();
-		$query = $db -> prepare("SELECT `PRENOM`, `NOM`, `ID` FROM `utilisateur` WHERE `PROFIL` = 'joueur' LIMIT {$limit} OFFSET {$offset} ");
+			$query = $db -> prepare("SELECT `utilisateur`.`ID`, `PRENOM`, `NOM`, `SCORE` FROM `utilisateur`,`joueur` WHERE `utilisateur`.`ID` = `joueur`.`ID` ORDER BY `joueur`.`SCORE` DESC LIMIT {$limit} OFFSET {$offset} ");
 			$query -> execute();
 			if($query -> rowCount() > 0){
 				$result = $query -> fetchAll(PDO::FETCH_ASSOC);

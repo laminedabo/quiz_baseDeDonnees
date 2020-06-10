@@ -19,18 +19,26 @@
                     ?>
             </div>
         </div>
-        <div class="container menu">
-            <ul class="nav nav-tabs nav-justified">
-                <li class="nav-item">
-                <a class="nav-link jouer <?php if(!isset($_GET['menu']) || $_GET['menu']=='listeQuestions') echo(' active') ?>" href="llll">Repondre aux questions</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link meilleursScores <?php if($_GET['menu']=='listeJoueurs') echo(' active') ?>" href="lll">Meilleurs Scores</a>
-                </li>
-            </ul>
-        </div>
     </div>
-    <div class="container" id="pageActuAdmin">
+    <div class="container text-center mt-3">
+            <div class="container repondre col-md-7 col-sm-12 border float-left ">
+                <h2>Repondre aux questions</h2>
+            </div>
+            <div class="container meilleurScr col-md-5 border float-left">
+                <h3>Meilleurs Scores</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Prenoms</th>
+                            <th>Noms</th>
+                            <th>Scores</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tMeilleursScr">
+                        <!-- ici la liste des cinq meilleurs joueurs -->
+                    </tbody>
+                </table>
+            </div>            
     </div>
 </div>
 <?php

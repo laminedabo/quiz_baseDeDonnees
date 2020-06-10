@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 
 	/*--------------------------------
-    Gestion de l'authentification
+     Gestion de l'authentification
     ----------------------------------*/ 
     $( "#form_connexion" ).on( "submit", function( event ) {
         event.preventDefault()
@@ -106,6 +106,40 @@ $(document).ready(function(){
 	}
 })
 
-$(".nav .nav-item .meilleursScores, .jouer").click(function(){
-    alert('ok')
+    /*==================================================
+	------------------ PAGE JOUEUR ---------------------
+	===================================================*/
+
+$(document).ready(function(){
+    meilleursScr();
+    /*---------------------------------
+    ----Ajouter de nouvelles lignes-----
+    -----------------------------------*/ 
+    function addLine(values){
+        $("#tMeilleursScr").empty();
+        let line;
+        for(const ligne of values){
+            line = `
+                <tr class="text-center" id = ligne_${ligne.ID}>
+                    <td id = t_prenom_${ligne.ID}>${ligne.PRENOM}</td>
+                    <td id = t_nom_${ligne.ID}>${ligne.NOM}</td>
+                    <td id = score_${ligne.ID}>${ligne.SCORE}</td>
+                </tr>`;
+            $("#tMeilleursScr").append(line);
+        }
+    }
+    function meilleursScr(){
+        let liste = "joueur";
+        let limit = 5;
+        let offset = 0;
+        $.ajax({
+        type: "POST",
+        url: "./pages/message.php",
+        data: {liste,limit,offset}, //on pouvait faire data: {limit,offset}, si identik
+        dataType: "JSON",
+        })
+        .done(data =>{
+            addLine(data);
+        })
+    }
 })

@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 body{
-	background-image: url(../images/img-bg.jpg);
+	background-image: url(../images/bgQuiz.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: 0px;
@@ -35,7 +35,7 @@ body{
 	background-color:  #7799DB;
 	padding: 10px 10% 30px 70px;
 	font-size: 30px;
-	border-radius: 4px 4px;
+	border-radius: 4px 4px 0 0;
 	color: #FFFFFF;
 }
 .form_container{
@@ -75,6 +75,7 @@ body{
 .accueil{
 	height: 100vh;
 	background-color: #FFFFFF;
+	opacity: 0.9;
 }
 .header_admin, .liste_esp_admin{
 	background-color: #7799DB;

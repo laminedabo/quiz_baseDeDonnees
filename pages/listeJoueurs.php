@@ -113,7 +113,7 @@
 				<tr class="text-center" id = ligne_${ligne.ID}>
 					<td id = t_prenom_${ligne.ID}>${ligne.PRENOM}</td>
 					<td id = t_nom_${ligne.ID}>${ligne.NOM}</td>
-					<td id = score_${ligne.ID}>${ligne.ID}</td>
+					<td id = score_${ligne.ID}>${ligne.SCORE}</td>
 				</tr>`;
 			$("#tbody").append(line);
 		}
@@ -123,7 +123,7 @@
 
 $(document).ready(function(){
         // 
-        let coul;
+    let coul;
     let clone;
     let type;
     let objEnCours=null;
