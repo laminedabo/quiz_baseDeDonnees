@@ -5,6 +5,7 @@ body{
 	background-image: url(../images/bgQuiz.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-attachment: fixed;
 	margin: 0px;
 	padding: 0px;
 	font-family: sans-serif;
@@ -48,6 +49,9 @@ body{
 	height: 50px;
 	border: 1px solid #2F80ED;
 }
+.myform .reponse_gen{
+	height: auto;
+}
 #login{
 	background-image: url('../images/icones/ic-login.png');
 }
@@ -73,9 +77,10 @@ body{
 	border-radius: 50%;
 } 
 .accueil{
-	height: 100vh;
 	background-color: #FFFFFF;
 	opacity: 0.9;
+	overflow-y: auto;
+	scrollbar-width: thin;
 }
 .header_admin, .liste_esp_admin{
 	background-color: #7799DB;
@@ -86,4 +91,8 @@ body{
 }
 .pageInscription{
 	background-color: #FFEBEB;
+}
+.type_reponse{
+	position: relative;
+	top: 20px;
 }

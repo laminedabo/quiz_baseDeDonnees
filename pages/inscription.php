@@ -1,7 +1,5 @@
-  <div class="container pageInscription p-2 mt-5 shadow">
-    <div class="container">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, repellat.
-    </div>
+<div class="col-md-12 loginform mt-5">Inscription</div>
+  <div class="container pageInscription p-2 shadow">
     <form method="POST" action="" class="myform" id="form_inscription">
           <div class="form-group">
             <input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prenom" error="Prenom" autofocus="">

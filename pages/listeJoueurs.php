@@ -25,10 +25,10 @@
         </ul>
         </nav>
     </div>
-    <div class="container infos col-md-4 float-left shadow-sm border  justify-content-center"><img src="./photos/user.png" alt="user img" id="gamer_img">
+    <div class="p-2 infos col-md-4 float-left shadow-sm border  justify-content-center"><img src="./photos/user.png" alt="user img" id="gamer_img">
     <div class="action">
-    <button class="btn btn-danger suppr">Supprimer</button>
-    <button class="btn btn-danger bloq">Bloquer</button>
+    <button class="btn btn-danger col-6 p-0 suppr">Supprimer</button>
+    <button class="btn btn-danger col-5 p-0 bloq">Bloquer</button>
     </div>
     </div>
 </div>

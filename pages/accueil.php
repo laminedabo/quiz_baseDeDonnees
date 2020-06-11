@@ -4,7 +4,7 @@
 	$nom = strtoupper($_SESSION['user']['NOM']);
 	$photo = (isset($_SESSION['user']['image']))?$_SESSION['user']['image']:"./photos/user.png";
 ?>
-<div class="container col-md-8 col-sm-10 col-xs-12 accueil">
+<div class="container col-md-8 col-sm-10 col-xs-12 h-100 accueil">
     <div class="pt-4 row header_admin">
         <div class="d-flex container">
             <div class=" idAdmin"><img class=" photoAdmin" src="<?=$photo?>">
