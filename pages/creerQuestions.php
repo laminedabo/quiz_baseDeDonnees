@@ -3,7 +3,7 @@
 <div class="container col-md-12 pageConnect">
       <div class="col-md-12 loginform">Creer une question</div>
       <div class="col-md-12 rounded-bottom form_container">
-        <form method="POST" action="" class="myform" id="form_inscription">
+        <form method="POST" action="" class="myform" id="form_newQst">
 			<div class="form-group">
 				<label for="question" class="col-2 col-form-label">Question</label>
 				<input type="text" name="question" class="form-control" id="question" error="Champ">
@@ -16,7 +16,7 @@
 					<small  class="form-text text-muted error_form" id="Nb point"></small>
 				</div>
 			</div>
-			<select class="form-control col-8 d-inline" id="select_type">
+			<select class="form-control col-8 d-inline" name="select" id="select_type">
 				<option selected="" value="">Choisissez le type de reponse</option>
 				<option value="choix_multiple">Choix multiple</option>
 				<option value="choix_simple">Choix simple</option>
@@ -161,7 +161,7 @@
 		}
 	}
 
-	$("#form_inscription").submit(function(){
+	$("#form_newQst").submit(function(){
 		event.preventDefault();
 		var err = false;
 		var check = false;
@@ -185,6 +185,11 @@
 
 		if (err === false && check === true) {
 			console.log($(this).serializeArray());
+			let qst = $(this).serializeArray();
+			$.post("./pages/message.php",qst,function(result){
+				alert(result);
+				$('#form_newQst')[0].reset(); // reinitiqlisqtion des champs
+			})
 		}
 	})
 </script>

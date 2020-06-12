@@ -7,7 +7,10 @@
         elseif($_POST['type'] == 'inscription'){
             $result =  addUser($_POST['prenom'],$_POST['nom'],$_POST['login'],$_POST['password']);
         }
-        echo  $result;
+        elseif ($_POST['type'] == 'creer_question') {
+            $result = addQuestion($_POST);
+        }
+        print_r($result);
     }
     if(isset($_POST['liste'])){
         if($_POST['liste'] == "joueur"){

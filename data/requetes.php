@@ -187,4 +187,62 @@
 			die("erreur: ".$e);
 		}
 	}
+
+	/*---------------------------------------------------------
+	ajouter une nouvelle question
+	----------------------------------------------------------*/
+	function addQuestion($qst = []){
+		try{
+			$db = connect_db();
+			$question = $qst['question'];
+			$type = $qst['select'];//le type de question
+			$point = $qst['nbPoint'];
+			$nb_reponse  = $qst['nb_reponse'];
+			$query = $db -> prepare("INSERT INTO `question` (`QUESTION`, `TYPE`, `POINT`) VALUES (:question, :type, :point)");
+			$query -> bindParam("question",$question,PDO::PARAM_STR);
+            $query -> bindParam("type",$type,PDO::PARAM_STR);
+			$query -> bindParam("point",$point,PDO::PARAM_INT);
+			if($query -> execute()){
+				try {
+					$lastId = $db -> lastInsertId();
+					$query = $db -> prepare("INSERT INTO `reponse`(`ID_QST`, `REPONSE`, `VALEUR`) VALUES (:id_qst, :reponse, :valeur)");
+					$query -> bindParam("id_qst",$lastId,PDO::PARAM_INT);
+					for ($i=1; $i <= $nb_reponse ; $i++) { 
+						if (isset($qst['reponse'.$i])) {
+							$valeur = 'fausse';
+							$rep = $qst['reponse'.$i];
+							$r_i = 'reponse'.$i;
+							if ($type === 'choix_simple') {
+								if ($r_i == $qst['radio']) {
+									$valeur = 'vraie';
+								}
+							}
+							elseif ($type === 'choix_multiple') {
+								if (in_array($r_i,$qst['check_list'])) {
+									$valeur = 'vraie';
+								}
+							}
+							elseif ($type === 'reponse_texte') {
+								$valeur = 'vraie';
+							}
+							$query -> bindParam("reponse",$rep,PDO::PARAM_STR);
+							$query -> bindParam("valeur",$valeur,PDO::PARAM_STR);
+							$query -> execute();
+							$result = 'ajoutée';
+						}
+					}
+				} 
+				catch (PDOException $e) {
+					exit($e);
+				}
+			}
+			else{
+				$result = 'une erreur est survenue';
+			}
+			return $result;
+		}
+		catch(PDOException $e){
+			die("erreur: ".$e -> getMessage());
+		}
+	}
 ?>
