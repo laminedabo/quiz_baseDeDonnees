@@ -8,10 +8,10 @@
     <div class="pt-4 row header_admin">
         <div class="d-flex container">
             <div class=" idAdmin"><img class=" photoAdmin" src="<?=$photo?>">
-				<div class="text-center" id="nom"><?php echo $prenom.'<br/>'.$nom;?></div>
+				<div class="text-center"><?php echo $prenom.'<br/>'.$nom;?></div>
             </div>
-            <div class="text-center align-self-center msg-accueil-adm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem tempora deserunt id harum asperiores voluptatum excepturi laborum distinctio dolore doloribus.
+            <div class="d-xs-none text-center align-self-center msg-accueil-adm">
+            Repondez aux questions et comparez votre niveau aux autres joueurs de la plateforme.
             </div>
             <div class=" deconnexion">
                      <?php
@@ -20,9 +20,12 @@
             </div>
         </div>
     </div>
-    <div class="container text-center mt-3">
-            <div class="container repondre col-md-7 col-sm-12 border float-left ">
-                <h2>Repondre aux questions</h2>
+    <div class="container mt-3">
+            <div class="container repondre col-md-7 col-sm-12  float-left ">
+            <div class="col-md-12 loginform ">Reponse aux Questions</div>
+            <div id="qstcontainer">
+                <div class="col-md-12" id="qstListe"></div>
+            </div>
             </div>
             <div class="container meilleurScr col-md-5 border float-left">
                 <h3>Meilleurs Scores</h3>

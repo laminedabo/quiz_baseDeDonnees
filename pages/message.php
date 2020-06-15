@@ -15,6 +15,8 @@
     if(isset($_POST['liste'])){
         if($_POST['liste'] == "joueur"){
             echo listeJoueur($_POST['limit'],$_POST['offset']);
+        }elseif ($_POST['liste'] == "question") {
+            echo(listeQuestion($_POST['limit'],$_POST['offset'])) ;
         }
     }
 	if (isset($_POST['update'])) {

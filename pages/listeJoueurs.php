@@ -111,8 +111,8 @@
 		for(const ligne of values){
 			line = `
 				<tr class="text-center" id = ligne_${ligne.ID}>
-					<td id = t_prenom_${ligne.ID}>${ligne.PRENOM}</td>
-					<td id = t_nom_${ligne.ID}>${ligne.NOM}</td>
+					<td class="prn" id = t_prenom_${ligne.ID}>${ligne.PRENOM}</td>
+					<td class="nm" id = t_nom_${ligne.ID}>${ligne.NOM}</td>
 					<td id = score_${ligne.ID}>${ligne.SCORE}</td>
 				</tr>`;
 			$("#tbody").append(line);
@@ -205,7 +205,10 @@ $(document).ready(function(){
         let id = $(this).attr('id');
         let action = $(this).html();
         if (id) {
-            const data={
+            let ln = 'ligne_'+id;//la ligne c a d le joueur
+            let prn = $('#'+ln).find('.prn').html();//son prenom
+            if (confirm('Vous aller '+action+' '+prn+' ?')) {
+                const data={
                     "action":action,
                     "table":"joueur",
                     "id":id
@@ -216,8 +219,12 @@ $(document).ready(function(){
                 data:data
                 })
                 .done(data =>{
-                    alert(data);
+                    console.log(data);
                 })
+                if (action === 'Supprimer') {
+                    $('#'+ln).hide();
+                }
+            }
         }
         else{
             alert('Selectionnez un Joueur')

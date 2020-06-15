@@ -39,7 +39,7 @@ body{
 	border-radius: 4px 4px 0 0;
 	color: #FFFFFF;
 }
-.form_container{
+.form_container, #qstListe{
 	background: #FFEBEB;
 	padding: 20px;
 }
@@ -52,7 +52,7 @@ body{
 .myform .reponse_gen{
 	height: auto;
 }
-#login{
+#login , #prenom, #nom{
 	background-image: url('../images/icones/ic-login.png');
 }
 #password{
@@ -81,6 +81,7 @@ body{
 	opacity: 0.9;
 	overflow-y: auto;
 	scrollbar-width: thin;
+	padding-bottom: 30px;
 }
 .header_admin, .liste_esp_admin{
 	background-color: #7799DB;
@@ -96,3 +97,19 @@ body{
 	position: relative;
 	top: 20px;
 }
+
+#qstcontainer{
+	height: 300px;
+	overflow-y: scroll;
+	scrollbar-width: thin;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&display=swap');
+
+ .textLobster{
+	font-family: 'Lobster Two', cursive;
+ }
+
+ .textRoboto{
+	 color: #053288;
+ }

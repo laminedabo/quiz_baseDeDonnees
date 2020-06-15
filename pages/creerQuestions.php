@@ -18,13 +18,14 @@
 			</div>
 			<select class="form-control col-8 d-inline" name="select" id="select_type">
 				<option selected="" value="">Choisissez le type de reponse</option>
-				<option value="choix_multiple">Choix multiple</option>
-				<option value="choix_simple">Choix simple</option>
-				<option value="reponse_texte">Reponse texte</option>
+				<option value="checkbox">Choix multiple</option>
+				<option value="radio">Choix simple</option>
+				<option value="text">Reponse texte</option>
 			</select>
 			<button type="button" hidden="" id="btn_nvlle_rep"></button>
-			<label for="btn_nvlle_rep" id="btn_nvlle_rep"><img src="./public/images/icones/ic-ajout-réponse.png" alt="+"></label>
+			<label for="btn_nvlle_rep" id="btn_nvlle_rep"><img src="./public/images/icones/ic-ajout-reponse.png" alt="+"></label>
 		    <input type="hidden" name="type" value="creer_question">
+			<input type="hidden" name="nb_reponse" id="nb_reponse">
 			<div class="form-group" id="reponses"></div>
              <button type="submit" name="nvlleqst" class="btn btn-primary btn_connexion d-block" id="btn_nvelleqst">Enregistrer</button>
         </form>
@@ -37,6 +38,7 @@
 ?>
 <script>
 	var reponses = document.getElementById("reponses");
+	var nb_reponse = document.getElementById("nb_reponse");
 	var select = document.getElementById('select_type');
 
 	 /* Variable Global i */
@@ -106,14 +108,15 @@
 		}
 		else{
 			increment();
+			nb_reponse.setAttribute("value",i);
 			var valeur = document.createElement("input");//le type de choix
 			valeur.setAttribute("class","mx-2 type_reponse");
 			switch(select.value) {
-				case "choix_simple":
+				case "radio":
 				    valeur.setAttribute("type","radio");
 				    valeur.setAttribute("name","radio");
 				    break;
-				case "reponse_texte":
+				case "text":
 				    valeur.setAttribute("type","radio");
 				    valeur.setAttribute("name","radio");
 				    valeur.setAttribute("checked","");
@@ -128,10 +131,6 @@
 			var y = document.createElement("INPUT");//le champ de la reponse
 			var retour = document.createElement('br');//le retour a la ligne
 			var error = document.createElement("small");//gestion de validation
-			var nb_reponse = document.createElement("input");//le nbre total de reponse
-			nb_reponse.setAttribute("type","hidden");
-			nb_reponse.setAttribute("name","nb_reponse");
-			nb_reponse.setAttribute("value",i);
 			error.setAttribute("class","error_form");
 			error.setAttribute("id","réponse"+i);
 			y.setAttribute("type", "text");
@@ -147,14 +146,13 @@
 			r.appendChild(y);
 			r.appendChild(valeur);
 			g.setAttribute("onclick", "removeElement('reponses','id_" + i + "')");
-			if (select.value!='reponse_texte') {//pour ne pas pouvoir supprimer une reponse texte
+			if (select.value!='text') {//pour ne pas pouvoir supprimer une reponse texte
 				r.appendChild(g);
 			}
 			r.setAttribute("id", "id_" + i);
 			r.appendChild(error);
-			r.appendChild(nb_reponse);
 			r.appendChild(retour);
-			if (select.value=='reponse_texte' && i>1) {//pour n'avoir qu'une seule reponse texte
+			if (select.value=='text' && i>1) {//pour n'avoir qu'une seule reponse texte
 				return false;
 			}
 			reponses.appendChild(r);

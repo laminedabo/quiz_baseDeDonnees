@@ -149,6 +149,42 @@
 			die("erreur: ".$e -> getMessage());
 		}
 	}
+	/*------------------------------------
+	envoyer la liste des questions
+	--------------------------------------*/
+	function listeQuestion($limit = 5, $offset = 1){
+		try{
+			$db = connect_db();
+			$query = $db -> prepare("SELECT * FROM `question` LIMIT {$limit} OFFSET {$offset} ");
+			$query -> execute();
+			if($query -> rowCount() > 0){
+				$result = $query -> fetchAll(PDO::FETCH_ASSOC);
+				$first = reset($result);
+				$first = $first['ID_QST'];
+				$last = end($result);
+				$last = $last['ID_QST'];
+				$qst = $result;
+				try {
+					$query = $db -> prepare("SELECT * FROM `reponse` WHERE `reponse`.`ID_QST` BETWEEN {$first} AND {$last} ");
+					$query -> execute();
+					$result = $query -> fetchAll(PDO::FETCH_ASSOC);
+					$rep = $result;
+				} 
+				catch (PDOException $e) {
+					die("erreur ".$e);
+				}
+				$result = array('qst' => $qst, 'rep' => $rep);
+				$result = json_encode($result);
+			}
+			else{
+				$result = 0;
+			}
+			return $result;		
+		}
+		catch(PDOException $e){
+			die("erreur: ".$e -> getMessage());
+		}
+	}
 
 	/*------------------------------------
 	Modifier info partielle utilisateur
@@ -212,17 +248,17 @@
 							$valeur = 'fausse';
 							$rep = $qst['reponse'.$i];
 							$r_i = 'reponse'.$i;
-							if ($type === 'choix_simple') {
+							if ($type === 'radio') {
 								if ($r_i == $qst['radio']) {
 									$valeur = 'vraie';
 								}
 							}
-							elseif ($type === 'choix_multiple') {
+							elseif ($type === 'checkbox') {
 								if (in_array($r_i,$qst['check_list'])) {
 									$valeur = 'vraie';
 								}
 							}
-							elseif ($type === 'reponse_texte') {
+							elseif ($type === 'text') {
 								$valeur = 'vraie';
 							}
 							$query -> bindParam("reponse",$rep,PDO::PARAM_STR);

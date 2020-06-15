@@ -1,6 +1,6 @@
-<div class="col-md-12 loginform mt-5">Inscription</div>
-  <div class="container pageInscription p-2 shadow">
-    <form method="POST" action="" class="myform" id="form_inscription">
+  <div class="container  mt-5">
+    <div class=" loginform">Inscription</div>
+    <form method="POST" action="" class="myform pageInscription  p-2 pb-4 mb-4" id="form_inscription">
           <div class="form-group">
             <input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prenom" error="Prenom" autofocus="">
             <small  class="form-text text-muted error_form" id="Prenom"></small>
